@@ -220,7 +220,7 @@ export function ChapterLearnPage() {
           </div>
 
           <div className="flex gap-1.5 overflow-x-auto pb-1">
-            {parsedPuzzles.map((puz, idx) => (
+            {parsedPuzzles.map((_puz, idx) => (
               <button
                 key={idx}
                 type="button"

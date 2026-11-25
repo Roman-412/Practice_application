@@ -20,6 +20,10 @@ export async function savePracticeProgress(payload: {
   currentIndex: number;
   questionId?: string;
   selectedOption?: string;
+  answers?: Array<{
+    questionId: string;
+    selectedOption: string;
+  }>;
 }): Promise<PracticeProgressAttempt> {
   const res = await api.put<{ data: { attempt: PracticeProgressAttempt } }>(
     '/practice/progress',
