@@ -51,6 +51,7 @@ export async function getDashboardStats(userId: string) {
         correctAnswers: true,
         totalQuestions: true,
         completedAt: true,
+        updatedAt: true,
         chapter: {
           select: {
             id: true,
@@ -81,7 +82,7 @@ export async function getDashboardStats(userId: string) {
       title: a.chapter.title,
       subtitle: `Scored ${a.correctAnswers}/${a.totalQuestions} (${a.scorePercentage}%)`,
       status: 'completed',
-      timestamp: a.completedAt,
+      timestamp: a.completedAt ?? a.updatedAt,
     })),
   ]
     .sort((a, b) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime())

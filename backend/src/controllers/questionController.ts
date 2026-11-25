@@ -10,7 +10,7 @@ export async function getChapterQuestions(
   try {
     const data = await chapterService.getChapterQuestions(
       req.user!.userId,
-      req.params.id
+      String(req.params.id)
     );
     res.json({
       success: true,
@@ -29,7 +29,7 @@ export async function getQuestion(
   try {
     const question = await chapterService.getQuestionById(
       req.user!.userId,
-      req.params.id
+      String(req.params.id)
     );
     res.json({
       success: true,

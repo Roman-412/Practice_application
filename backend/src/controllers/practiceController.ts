@@ -14,7 +14,7 @@ export async function getProgress(
   try {
     const attempt = await practiceService.getPracticeProgress(
       req.user!.userId,
-      req.params.chapterId
+      String(req.params.chapterId)
     );
     res.json({
       success: true,
@@ -58,7 +58,7 @@ export async function resetProgress(
   try {
     await practiceService.resetPracticeProgress(
       req.user!.userId,
-      req.params.chapterId
+      String(req.params.chapterId)
     );
     res.json({
       success: true,

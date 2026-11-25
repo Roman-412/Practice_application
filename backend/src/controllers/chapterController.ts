@@ -51,7 +51,7 @@ export async function getChapter(
   try {
     const chapter = await chapterService.getChapterById(
       req.user!.userId,
-      req.params.id
+      String(req.params.id)
     );
     res.json({
       success: true,
@@ -103,7 +103,7 @@ export async function updateChapter(
     const parsed = updateChapterSchema.parse(req.body);
     const chapter = await chapterService.updateChapter(
       req.user!.userId,
-      req.params.id,
+      String(req.params.id),
       parsed
     );
 
@@ -125,7 +125,7 @@ export async function deleteChapter(
   try {
     const deleted = await chapterService.deleteChapter(
       req.user!.userId,
-      req.params.id
+      String(req.params.id)
     );
     res.json({
       success: true,
