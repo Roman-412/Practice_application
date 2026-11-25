@@ -1,0 +1,44 @@
+{
+  "chapter_id": "01_percentage",
+  "title": "Percentage",
+  "description": "Master fundamental percentage calculations, fraction conversions, and percentage change problems.",
+  "category": "Quantitative Aptitude",
+  "instructions": "Read each question carefully. Calculate the percentage value before selecting an option.",
+  "questions": [
+    {
+      "question_id": 1,
+      "question": "What is 20% of 200?",
+      "options": ["20", "30", "40", "50"],
+      "correct_answer": "40",
+      "explanation": "20% of 200 = (20 / 100) × 200 = 40."
+    },
+    {
+      "question_id": 2,
+      "question": "If a product price increases from ₹500 to ₹600, what is the percentage increase?",
+      "options": ["15%", "20%", "25%", "10%"],
+      "correct_answer": "20%",
+      "explanation": "Increase = 600 - 500 = 100. Percentage increase = (100 / 500) × 100 = 20%."
+    },
+    {
+      "question_id": 3,
+      "question": "Convert the fraction 3/8 into a percentage.",
+      "options": ["35.5%", "37.5%", "38.5%", "40%"],
+      "correct_answer": "37.5%",
+      "explanation": "(3 / 8) × 100 = 300 / 8 = 37.5%."
+    },
+    {
+      "question_id": 4,
+      "question": "If 30% of a number is 90, what is the number?",
+      "options": ["270", "300", "330", "250"],
+      "correct_answer": "300",
+      "explanation": "Let the number be x. 0.30 × x = 90 => x = 90 / 0.30 = 300."
+    },
+    {
+      "question_id": 5,
+      "question": "A student scored 420 out of 600 marks. What is the percentage score?",
+      "options": ["68%", "70%", "72%", "75%"],
+      "correct_answer": "70%",
+      "explanation": "(420 / 600) × 100 = 70%."
+    }
+  ]
+}

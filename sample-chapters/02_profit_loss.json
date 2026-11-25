@@ -1,0 +1,37 @@
+{
+  "chapter_id": "02_profit_loss",
+  "title": "Profit and Loss",
+  "description": "Practice cost price, selling price, profit margin, and discount percentage problems.",
+  "category": "Quantitative Aptitude",
+  "instructions": "Identify Cost Price (CP) and Selling Price (SP) clearly before applying formulas.",
+  "questions": [
+    {
+      "question_id": 1,
+      "question": "A book is bought for ₹250 and sold for ₹300. What is the profit percentage?",
+      "options": ["15%", "20%", "25%", "16.67%"],
+      "correct_answer": "20%",
+      "explanation": "Profit = 300 - 250 = ₹50. Profit % = (50 / 250) × 100 = 20%."
+    },
+    {
+      "question_id": 2,
+      "question": "An item with a marked price of ₹800 is sold at a 15% discount. What is the selling price?",
+      "options": ["₹680", "₹700", "₹660", "₹720"],
+      "correct_answer": "₹680",
+      "explanation": "Discount = 15% of 800 = 120. Selling Price = 800 - 120 = ₹680."
+    },
+    {
+      "question_id": 3,
+      "question": "If selling an article for ₹720 results in a 10% loss, what was its cost price?",
+      "options": ["₹792", "₹800", "₹810", "₹780"],
+      "correct_answer": "₹800",
+      "explanation": "90% of CP = 720 => CP = 720 / 0.90 = ₹800."
+    },
+    {
+      "question_id": 4,
+      "question": "If the cost price of 10 pens equals the selling price of 8 pens, what is the profit percentage?",
+      "options": ["20%", "25%", "30%", "15%"],
+      "correct_answer": "25%",
+      "explanation": "Profit % = ((10 - 8) / 8) × 100 = (2 / 8) × 100 = 25%."
+    }
+  ]
+}

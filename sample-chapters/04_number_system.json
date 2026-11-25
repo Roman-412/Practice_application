@@ -1,0 +1,30 @@
+{
+  "chapter_id": "04_number_system",
+  "title": "Number System",
+  "description": "Core concepts of divisibility rules, prime numbers, HCF, LCM, and remainders.",
+  "category": "Quantitative Aptitude",
+  "instructions": "Verify divisibility and prime factorization carefully.",
+  "questions": [
+    {
+      "question_id": 1,
+      "question": "Which of the following is the smallest prime number?",
+      "options": ["0", "1", "2", "3"],
+      "correct_answer": "2",
+      "explanation": "2 is the smallest and the only even prime number."
+    },
+    {
+      "question_id": 2,
+      "question": "What is the LCM of 12, 18, and 24?",
+      "options": ["48", "72", "96", "144"],
+      "correct_answer": "72",
+      "explanation": "12 = 2²×3, 18 = 2×3², 24 = 2³×3. LCM = 2³ × 3² = 8 × 9 = 72."
+    },
+    {
+      "question_id": 3,
+      "question": "What is the remainder when 2^10 is divided by 3?",
+      "options": ["0", "1", "2", "3"],
+      "correct_answer": "1",
+      "explanation": "2 ≡ -1 (mod 3), so 2^10 ≡ (-1)^10 = 1 (mod 3)."
+    }
+  ]
+}

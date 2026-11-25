@@ -1,0 +1,146 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id               String            @id @default(cuid())
+  name             String
+  email            String            @unique
+  passwordHash     String            @map("password_hash")
+  role             String            @default("learner")
+  createdAt        DateTime          @default(now()) @map("created_at")
+  updatedAt        DateTime          @updatedAt @map("updated_at")
+
+  chapters         Chapter[]
+  practiceAttempts PracticeAttempt[]
+  uploadHistory    UploadHistory[]
+
+  @@map("users")
+}
+
+model Chapter {
+  id             String            @id @default(cuid())
+  userId         String            @map("user_id")
+  chapterCode    String            @map("chapter_code")
+  title          String
+  description    String            @default("")
+  category       String            @default("General")
+  instructions   String?
+  isActive       Boolean           @default(true) @map("is_active")
+  questionCount  Int               @default(0) @map("question_count")
+  sourceFileName String?           @map("source_file_name")
+  createdAt      DateTime          @default(now()) @map("created_at")
+  updatedAt      DateTime          @updatedAt @map("updated_at")
+
+  user             User              @relation(fields: [userId], references: [id], onDelete: Cascade)
+  questions        Question[]
+  practiceAttempts PracticeAttempt[]
+  uploadHistory    UploadHistory[]
+
+  @@unique([userId, chapterCode])
+  @@index([userId, category])
+  @@index([userId, createdAt])
+  @@map("chapters")
+}
+
+model Question {
+  id                 String           @id @default(cuid())
+  chapterId          String           @map("chapter_id")
+  externalQuestionId String           @map("external_question_id")
+  orderIndex         Int              @map("order_index")
+  questionText       String           @map("question_text")
+  questionType       String           @default("mcq") @map("question_type")
+  correctAnswer      String           @map("correct_answer")
+  explanation        String           @default("")
+  difficulty         String?
+  createdAt          DateTime         @default(now()) @map("created_at")
+  updatedAt          DateTime         @updatedAt @map("updated_at")
+
+  chapter     Chapter          @relation(fields: [chapterId], references: [id], onDelete: Cascade)
+  options     QuestionOption[]
+  userAnswers UserAnswer[]
+
+  @@unique([chapterId, orderIndex])
+  @@index([chapterId])
+  @@map("questions")
+}
+
+model QuestionOption {
+  id          String   @id @default(cuid())
+  questionId  String   @map("question_id")
+  optionText  String   @map("option_text")
+  optionOrder Int      @map("option_order")
+  isCorrect   Boolean  @default(false) @map("is_correct")
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  question Question @relation(fields: [questionId], references: [id], onDelete: Cascade)
+
+  @@unique([questionId, optionOrder])
+  @@index([questionId])
+  @@map("question_options")
+}
+
+model PracticeAttempt {
+  id                String       @id @default(cuid())
+  userId            String       @map("user_id")
+  chapterId         String       @map("chapter_id")
+  status            String       @default("completed")
+  lastQuestionIndex Int          @default(0) @map("last_question_index")
+  totalQuestions    Int          @map("total_questions")
+  correctAnswers    Int          @map("correct_answers")
+  scorePercentage   Float        @map("score_percentage")
+  completedAt       DateTime?    @map("completed_at")
+  createdAt         DateTime     @default(now()) @map("created_at")
+  updatedAt         DateTime     @updatedAt @map("updated_at")
+
+  user        User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  chapter     Chapter      @relation(fields: [chapterId], references: [id], onDelete: Cascade)
+  userAnswers UserAnswer[]
+
+  @@index([userId, createdAt])
+  @@index([userId, chapterId, status])
+  @@index([chapterId])
+  @@map("practice_attempts")
+}
+
+model UserAnswer {
+  id             String   @id @default(cuid())
+  attemptId      String   @map("attempt_id")
+  questionId     String   @map("question_id")
+  selectedOption String   @map("selected_option")
+  isCorrect      Boolean  @map("is_correct")
+  createdAt      DateTime @default(now()) @map("created_at")
+  updatedAt      DateTime @updatedAt @map("updated_at")
+
+  attempt  PracticeAttempt @relation(fields: [attemptId], references: [id], onDelete: Cascade)
+  question Question        @relation(fields: [questionId], references: [id], onDelete: Cascade)
+
+  @@index([attemptId])
+  @@index([questionId])
+  @@map("user_answers")
+}
+
+model UploadHistory {
+  id             String   @id @default(cuid())
+  userId         String   @map("user_id")
+  chapterId      String?  @map("chapter_id")
+  fileName       String   @map("file_name")
+  fileSize       Int      @map("file_size")
+  status         String
+  errorMessage   String?  @map("error_message")
+  questionsCount Int      @default(0) @map("questions_count")
+  createdAt      DateTime @default(now()) @map("created_at")
+  updatedAt      DateTime @updatedAt @map("updated_at")
+
+  user    User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  chapter Chapter? @relation(fields: [chapterId], references: [id], onDelete: SetNull)
+
+  @@index([userId, createdAt])
+  @@map("upload_history")
+}

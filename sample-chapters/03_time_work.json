@@ -1,0 +1,30 @@
+{
+  "chapter_id": "03_time_work",
+  "title": "Time and Work",
+  "description": "Learn efficiency ratios, combined work rates, and pipes & cisterns problems.",
+  "category": "Quantitative Aptitude",
+  "instructions": "Use LCM method or one-day work fraction to solve efficiently.",
+  "questions": [
+    {
+      "question_id": 1,
+      "question": "A can complete a task in 12 days and B can complete it in 24 days. Together, how many days will they take?",
+      "options": ["6 days", "8 days", "9 days", "10 days"],
+      "correct_answer": "8 days",
+      "explanation": "Combined 1-day work = 1/12 + 1/24 = 3/24 = 1/8. So together they take 8 days."
+    },
+    {
+      "question_id": 2,
+      "question": "If 15 workers can build a wall in 10 days, how many days will 25 workers take?",
+      "options": ["5 days", "6 days", "7 days", "8 days"],
+      "correct_answer": "6 days",
+      "explanation": "M1 × D1 = M2 × D2 => 15 × 10 = 25 × D2 => D2 = 150 / 25 = 6 days."
+    },
+    {
+      "question_id": 3,
+      "question": "Pipe A fills a tank in 6 hours and Pipe B empties it in 12 hours. If both are opened, how long will it take to fill the tank?",
+      "options": ["10 hours", "12 hours", "14 hours", "18 hours"],
+      "correct_answer": "12 hours",
+      "explanation": "Net fill per hour = 1/6 - 1/12 = 1/12. Hence it fills in 12 hours."
+    }
+  ]
+}
